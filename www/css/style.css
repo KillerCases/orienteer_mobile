@@ -1,0 +1,465 @@
+/* 
+Project Name: Blank Template
+Client: Your Client
+Author: Your Name
+Developer @GA in NYC
+*/
+
+/******************************************
+/* NOTES                   
+/*******************************************/
+Electric Blue #2C75FF
+Electric Green #00FF00
+Neon Yellow #ffff00
+
+/******************************************
+/* SETUP                   
+/*******************************************/
+
+/* Box Model Hack */
+* {
+     -moz-box-sizing: border-box; /* Firexfox */
+     -webkit-box-sizing: border-box; /* Safari/Chrome/iOS/Android */
+     box-sizing: border-box; /* IE */
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+.alignright {
+	float: right; 
+	padding: 0 0 10px 10px; /* note the padding around a right floated image */
+}
+
+.alignleft {
+	float: left; 
+	padding: 0 10px 10px 0; /* note the padding around a left floated image */
+}
+
+/******************************************
+/* BASE STYLES                   
+/*******************************************/
+
+html, body{
+     overflow-x: hidden !important;
+     position: relative !important;
+     background: white;
+}
+
+body {
+     background: white;
+     font-size: 28px;
+     line-height: 0.8;
+     font-family: "Helvetica Neue",'Snippet', 'Poiret One', Helvetica, Arial, sans-serif; 
+}
+
+h1{
+     font-size:150%;
+}
+
+h2 {
+     font-size: 100%;
+     color: #000000;
+     line-height: 1;
+}
+
+h3{
+     font-size: 75%;
+     line-height:1;
+     color:gray;
+}
+
+p{
+     font-size:40%;
+     line-height:1;
+     text-align:center;
+}
+
+/******************************************
+/* LAYOUT                   
+/*******************************************/
+
+header {
+
+}
+
+footer {
+
+}
+
+/******************************************
+/* ADDITIONAL STYLES                   
+/*******************************************/
+
+.titleBar{
+     display:block;
+     width:100%;
+     background:black;
+     color:white;
+     margin:0;
+}
+
+.titleBar h2{
+     text-align:center;
+     color:white;
+     line-height:1.5;
+     margin:0;
+}
+
+.buttonStyle{
+     border: 2px solid #00FF00;
+     background-image: -webkit-linear-gradient(bottom, #00FF00, white); /* For Chrome and Safari */
+     line-height:1;
+}
+
+.buttonStyle a{
+     text-decoration: none;
+}
+
+.buttonStyle h3{
+     text-align:center;
+     color:black;
+     line-height:0;
+}
+
+.infoStyle{
+     border: 2px solid #CCC;
+     color:black;
+      background-image: -webkit-linear-gradient(bottom, #CCC, white);
+     background-height: 100%;
+     background-position: left top;
+}
+
+
+.Title{
+     margin: 50px 0 50px 0;
+}
+
+.Title h2{
+     text-align:center;
+     text-transform: uppercase;
+     display:block;
+     margin:0 auto;
+} 
+
+/******************************************
+/* SPLASH PAGE                  
+/*******************************************/
+
+#splash{
+     background:white;
+}
+
+.welcome_text{
+     display:block;
+     padding:5px 10px 5px 10px;
+}
+
+.welcome_text h1, h2, h3{
+     text-align: center;
+}
+
+#registerFacebook{
+     display:block;
+     margin:0 auto;
+     width:200px;
+}
+
+#continue a, .startAgain p{
+     text-decoration: underline;
+     color:#6C6C6C;
+}
+
+/******************************************
+/* LOGO               
+/*******************************************/
+
+
+
+#logo{
+     border-left: 50px solid #00FF00;
+     border-right: 50px solid white;
+     border-top: 50px solid white;
+     border-bottom: 50px solid #00FF00; 
+     border-radius:5px;
+     height: 0;
+     width:0;
+     position: relative;
+     margin: 15% auto;
+}
+#logo::after {
+     content: "";
+     height: 86px;
+     width: 100px;
+     margin-left: -33px;
+     position: absolute;
+     margin-top: 10px;
+     border-left: 3px solid black;
+     -webkit-transform: rotate(45deg);
+}
+
+#logo:before{
+     content:"N";
+     position:absolute;
+     top: -37px;
+     left: 24px;
+     font-size:25px;
+}
+.arrowTip{
+     border-right: 3px solid black;
+     border-top: 3px solid black;
+     height: 12px;
+     width: 12px;
+     position: absolute;
+     top: 32px;
+     left: 47px;
+}
+#outline{
+     border:3px solid #CCC;
+     border-radius: 5px;
+     height:97px;
+     width:97px;
+     display:block;
+     position:absolute;
+     z-index:1;
+     float:right;
+     left:-50px;
+     top:-50px;
+     box-shadow:#CCC 8px 8px 8px 2px;
+
+}
+
+/******************************************
+/* COURSES                 
+/*******************************************/
+
+.course_wrapper{
+     width:100%;
+     border:2px solid gray;
+     display:block;
+/*     height:100%;*/
+     margin:0 0 2% 0;
+}
+
+.map_thumbnail{
+     width:100%;
+     height:100px;
+     display:block;
+     margin:0 auto;
+     padding:0;
+}
+
+.description_wrapper{
+     display:block;
+     width:100%;
+     height:20px;
+/*     padding:0 20% 0 2%;*/
+/*     margin:0 20% 0 2%;*/
+}
+
+.text_wrapper {
+     display:block;
+     float:left;
+     text-align: left;
+     padding:0 0 2% 2%;
+}
+
+.arrow_wrapper{
+     display:block;
+     width:20px;
+     height: 20px;
+     margin:0 auto;
+     float:right;
+}
+
+.arrow_right {
+     width: 0; 
+     height: 0; 
+     border-top: 10px solid transparent;
+     border-bottom: 10px solid transparent;
+     border-left: 10px solid gray;     
+}
+
+
+
+
+/******************************************
+/* START                  
+/*******************************************/
+
+#startPage{
+     height:1136px;
+     width:100%;
+}
+
+#instructions{
+     position:absolute;
+     left:10%;
+     top:7%;
+     line-height:1.5;
+     width:80%;     
+     display:block;
+     border-radius:5%;
+     color:black;
+     margin: 0 auto;
+     text-align:center;
+     z-index:1;
+
+}
+
+#map_canvas{
+     width:100%;
+     height:300px;
+     padding-bottom:20px;
+     border:1px solid black;
+     display:block;
+     margin:0 auto;
+}
+
+#map_canvas2{
+     width:100%;
+     height:300px;
+     border:1px solid black;
+     display:block;
+     margin:0 auto;
+}
+
+
+#startButton{
+     width:80%;
+     border-radius:5px;
+     margin: 10px auto;
+     text-align:center;
+}
+
+#startButton h2{
+     text-align:center;
+     font-weight:bold;
+}
+
+/******************************************
+/* PLAY                  
+/*******************************************/
+
+#playPage{
+     height:1136px;
+     width:100%;
+     background:white;
+}
+
+#logButton{
+     width:80%;
+     border-radius:5px;
+     margin: 10px auto;
+     text-align:center;
+}
+
+#logButton h2{
+     text-align:center;
+     font-weight:bold;
+}
+
+/******************************************
+/* RESULTS                  
+/*******************************************/
+
+#resultPage{
+     height:1136px;
+     width:100%;
+}
+
+table{
+     width:100%;
+     line-height:2;
+     margin: 50px 10px 50px 10px;
+}
+
+.gridtable {
+     border-width: 1px;
+     table-layout:fixed;
+     width:98%;
+
+}
+.gridtable td {
+     border-width: 1px;
+     padding: 1%;
+     border: 1px solid white;
+}
+
+.gridtable tr:nth-child(odd) {
+     background: #CCC ;
+}
+.gridtable tr:nth-child(even) {
+     background: white ;
+}
+
+.gridtable th {
+     text-align:left;
+     border: 1px solid white;
+     background:white;
+     font-weight:bold;
+}
+
+/*----------------------------------------------------------------------------- 
+=05 SOCIAL MEDIA  
+-----------------------------------------------------------------------------*/
+
+
+
+#socialmedia {
+     margin:0 auto;
+     width:200px;
+}
+
+#socialmedia ul li {
+      display:block;
+      float:left;
+      width:60px;
+      height:60px;
+      background:blue;   
+      text-indent:-9999em;
+}
+
+#socialmedia ul li.linkedin {
+     background:url('../images/socialnav.png') 0px 64px;
+}
+#socialmedia ul li.twitter {
+     background:url('../images/socialnav.png') -60px 64px; 
+}
+#socialmedia ul li.facebook {
+     background:url('../images/socialnav.png') -120px 64px; 
+}
+#socialmedia ul li.rss {
+     background:url('../images/socialnav.png') -180px 64px; 
+}
+
+
+
+#socialmedia ul li.linkedin:hover {
+     background:url('../images/socialnav.png') 0px 0px; 
+}
+
+#socialmedia ul li.twitter:hover {
+     background:url('../images/socialnav.png') -60px 0px; 
+}
+
+#socialmedia ul li.facebook:hover {
+     background:url('../images/socialnav.png') -120px 0px; 
+}
+
+#socialmedia ul li.rss:hover {
+     background:url('../images/socialnav.png') -180px 0px; 
+}
+
+
