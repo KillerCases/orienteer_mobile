@@ -32,7 +32,7 @@ var correctCheckpoints =[]; // Array to hold location of correct checkpoints
 var userCheckpoints=[]; // Array to hold any GPS location that the user logs, nomatter whether it is correct
 var confirmed = []; // Array to hold GPS locations that have been validated and are associated with a correctCheckpoint
 var result = 0;
-var map_id =1; // Default to map id 1
+var map_id =3; // Default to map id 1
 
 //var mapUrl;
 //var count;
@@ -59,36 +59,45 @@ showCanvasAgain(map_id);
 });
 
 function showCanvas(map_id){
- //    alert('showCanvas has map id'+ map_id)
- //    // alert('getCheckpoints 0 is'+ correctCheckpoints[0].latitude)
-	// $('#map_canvas').gmap(
-	// 	{ 'center': correctCheckpoints[0].latitude+','+correctCheckpoints[0].longitude, 'zoom':10  , 'zoomControl': false, 'mapTypeControl': false, 'streetViewControl': false, 'callback':function() {
-	// 		var self = this;
- //            alert('before getJSON has map id'+ map_id)
-
-	// 		// $.getJSON( 'http://www.orienteer.it/map_points', {map_id: map_id}, function(data) { 
-	// 		// 	$.each( data, function(i, m) {
-	// 		// 		self.addMarker( { 'position': new google.maps.LatLng(m.latitude, m.longitude), 'bounds':true } );
-	// 		// 	}); 
-	// 		// }
-	// 		// )
- //            // $.ajax({
- //            //     type: 'GET',
- //            //     dataType: "json",
- //            //     url: 'http://www.orienteer.it/map_points',
- //            //     // data: {map_id: map_id},
- //            //     cache: false,
- //            //     success: function(data) {
- //            //         // $.each( data, function(i, m) {
- //            //         //  self.addMarker( { 'position': new google.maps.LatLng(m.latitude, m.longitude), 'bounds':true } );
- //            //         alert('success')
- //            //     }
+    // alert('showCanvas has map id'+ map_id)
+    // alert('getCheckpoints 0 is'+ correctCheckpoints[0].latitude)
+    $('#map_canvas').gmap(
+      { 'center': correctCheckpoints[0].latitude+','+correctCheckpoints[0].longitude, 'zoom':10  , 'zoomControl': false, 'mapTypeControl': false, 'streetViewControl': false, 'callback':function() {
+         var self = this;
+         $.ajax({
+            type: 'GET',
+            dataType: "json",
+            url: 'http://www.orienteer.it/map_points',
+            data: {map_id: map_id},
+            cache: false,
+            success: function(data) {
+                $.each( data, function(i, m) {
+                    self.addMarker( { 'position': new google.maps.LatLng(m.latitude, m.longitude), 'bounds':true } );
+                    alert('success')
+                });
                 
- //            //     }); //Close ajax
- //        	};
- //        });
-    };
+                }; //Close ajax
+            });
+     }
+ });
+}
 
+// function showCanvas(map_id){
+// 	// alert('before getJSON has map id'+ map_id);
+
+// 	$('#map_canvas').gmap(
+// 		{ 'center': correctCheckpoints[0].latitude+','+correctCheckpoints[0].longitude, 'zoom':10  , 'callback':function() {
+// 			var self = this;
+// 			$.getJSON( 'http://www.orienteer.it/map_points', {map_id: map_id}, function(data) { 
+// 				$.each( data, function(i, m) {
+// 					self.addMarker( { 'position': new google.maps.LatLng(m.latitude, m.longitude), 'bounds':true } );
+// 				}); 
+// 			}
+// 			)
+// 		}
+// 	});
+
+// };
 
 //showCanvas();
 
@@ -123,6 +132,8 @@ function showMapThumbnail(){
 
 
 $(document).ready(function(e){
+
+	// $.ajaxSetup({ cache: false });
 
     // alert('loaded')
 
