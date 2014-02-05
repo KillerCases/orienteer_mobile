@@ -41,6 +41,8 @@ var map_id =3; // Default to map id 1
 /* LOAD MAPS            
 /*******************************************/
 
+// NOTES: pageshow event is fired every time the page loads, not just once. showCanvas needs to be called after pageShow as needs heigh dimensions
+
 $(document).on("pagecreate", "#splash", function () { 
 // alert('splash');
 });
@@ -49,8 +51,6 @@ $(document).on("pageshow", "#coursePage", function () {
 //alert('start');
 });
 $(document).on("pageshow", "#startPage", function () { 
-//alert('start');
-// alert('map_id is'+map_id);
 showCanvas(map_id);
 });
 $(document).on("pageshow", "#playPage", function () { 
@@ -58,46 +58,23 @@ $(document).on("pageshow", "#playPage", function () {
 showCanvasAgain(map_id);
 });
 
+
 function showCanvas(map_id){
-    // alert('showCanvas has map id'+ map_id)
-    // alert('getCheckpoints 0 is'+ correctCheckpoints[0].latitude)
-    $('#map_canvas').gmap(
-      { 'center': correctCheckpoints[0].latitude+','+correctCheckpoints[0].longitude, 'zoom':10  , 'zoomControl': false, 'mapTypeControl': false, 'streetViewControl': false, 'callback':function() {
-         var self = this;
-         $.ajax({
-            type: 'GET',
-            dataType: "json",
-            url: 'http://www.orienteer.it/map_points',
-            data: {map_id: map_id},
-            cache: false,
-            success: function(data) {
-                $.each( data, function(i, m) {
-                    self.addMarker( { 'position': new google.maps.LatLng(m.latitude, m.longitude), 'bounds':true } );
-                    alert('success')
-                });
-                
-                }; //Close ajax
-            });
-     }
- });
-}
+        $('#map_canvas').gmap(
+            { 'center': correctCheckpoints[0].latitude+','+correctCheckpoints[0].longitude, 'zoom':10  , 'callback':function() {
+                var self = this;
+                $.getJSON( 'http://www.orienteer.it/map_points', {map_id: map_id}, function(data) { 
+                    // alert(data);
+                    $.each( data, function(i, m) {
+                        self.addMarker( { 'position': new google.maps.LatLng(m.latitude, m.longitude), 'bounds':true } );
+                    }); 
+                }
+                )
+            }
+        });
+};
 
-// function showCanvas(map_id){
-// 	// alert('before getJSON has map id'+ map_id);
 
-// 	$('#map_canvas').gmap(
-// 		{ 'center': correctCheckpoints[0].latitude+','+correctCheckpoints[0].longitude, 'zoom':10  , 'callback':function() {
-// 			var self = this;
-// 			$.getJSON( 'http://www.orienteer.it/map_points', {map_id: map_id}, function(data) { 
-// 				$.each( data, function(i, m) {
-// 					self.addMarker( { 'position': new google.maps.LatLng(m.latitude, m.longitude), 'bounds':true } );
-// 				}); 
-// 			}
-// 			)
-// 		}
-// 	});
-
-// };
 
 //showCanvas();
 
@@ -220,43 +197,34 @@ function getCourses(){
  // alert('getCourses');
  var location = $("#location_selector :selected").val()
  $.getJSON( 'http://www.orienteer.it/map', {city: location}, function(data) { 
-     $.each( data, function(i, m) {
+   $.each( data, function(i, m) {
          // alert(m.name);
          $( "#courses" ).append( 
             "<div class ='course_wrapper' id='"+m.id+"'>"+
-                "<div class ='map_wrapper' id='map_wrapper'>"+
-                "</div>"+
-                "<div class='description_wrapper' id='description_wrapper'>"+
-                    "<div class='text_wrapper' id='text_wrapper'>"+
-                        "<p>"+m.name+"</p>"+
-                    "</div>"+ 
-                    "<div class = 'arrow_wrapper'>"+
-                        "<div class='arrow_right'></div>"+
-                    "</div>"+ 
-                "</div>"+                
+            "<div class ='map_wrapper' id='map_wrapper'>"+
+            "</div>"+
+            "<div class='description_wrapper' id='description_wrapper'>"+
+            "<div class='text_wrapper' id='text_wrapper'>"+
+            "<p>"+m.name+"</p>"+
+            "</div>"+ 
+            "<div class = 'arrow_wrapper'>"+
+            "<div class='arrow_right'></div>"+
+            "</div>"+ 
+            "</div>"+                
             "</div>"
-       )
-            $('#courses').on('click', '.course_wrapper', function() {
-                map_id = $(this).attr('id');
-                $.when(getCorrectCheckpoints(map_id)).done($.mobile.changePage('#startPage'));
+            )
+         $('#courses').on('click', '.course_wrapper', function() {
+            map_id = $(this).attr('id');
+            $('#map_canvas').gmap('destroy');
+            $.when(getCorrectCheckpoints(map_id)).done($.mobile.changePage('#startPage'));  
             }); 
-
-        });
-
+     });
 }); 
 };
 
-$('.course_wrapper').on('click', function(){
-    // alert(this.id);
-    alert('test clicked');
-    $.mobile.changePage('#startPage');
-});
-
-$(document).on('click', '.course_wrapper' , function() {
-     alert('clicked wrapper')
-     $.mobile.changePage('#startPage');
-});
-
+$('#courseBack').on('click', function(){
+    $.mobile.changePage('#coursePage')
+})
 
 
 /******************************************
