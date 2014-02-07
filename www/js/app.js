@@ -11,12 +11,30 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     // Empty
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
- }
+}
 
 // alert dialog dismissed
 function alertDismissed() {
     // do something
 }
+
+/******************************************
+/* INDEX             
+/*******************************************/
+// Global Variables
+// Create Pages
+// Generate maps
+// ****************************************
+// DOCUMENT READY
+// Page transition & Logic
+// Load courses
+// Start button & timer
+// ****************************************
+// Facebook login
+// Score result calculation
+// Allow user to log checkpoints
+// Post results back to server
+
 
 /******************************************
 /* GLOBAL VARIABLES               
@@ -38,7 +56,7 @@ var map_id =3; // Default to map id 1
 //var count;
 
 /******************************************
-/* LOAD MAPS            
+/* CREATE PAGES       
 /*******************************************/
 
 // NOTES: pageshow event is fired every time the page loads, not just once. showCanvas needs to be called after pageShow as needs heigh dimensions
@@ -47,7 +65,6 @@ $(document).on("pagecreate", "#splash", function () {
 // alert('splash');
 });
 $(document).on("pageshow", "#coursePage", function () { 
-// showMapThumbnail();
 //alert('start');
 });
 $(document).on("pageshow", "#startPage", function () { 
@@ -58,25 +75,26 @@ $(document).on("pageshow", "#playPage", function () {
 showCanvasAgain(map_id);
 });
 
+/******************************************
+/* GENERATE MAPS     
+/*******************************************/
+
 
 function showCanvas(map_id){
-        $('#map_canvas').gmap(
-            { 'center': correctCheckpoints[0].latitude+','+correctCheckpoints[0].longitude, 'zoom':10  , 'callback':function() {
-                var self = this;
-                $.getJSON( 'http://www.orienteer.it/map_points', {map_id: map_id}, function(data) { 
+    $('#map_canvas').gmap(
+        { 'center': correctCheckpoints[0].latitude+','+correctCheckpoints[0].longitude, 'zoom':10  , 'callback':function() {
+            var self = this;
+            $.getJSON( 'http://www.orienteer.it/map_points', {map_id: map_id}, function(data) { 
                     // alert(data);
                     $.each( data, function(i, m) {
                         self.addMarker( { 'position': new google.maps.LatLng(m.latitude, m.longitude), 'bounds':true } );
                     }); 
                 }
                 )
-            }
-        });
+        }
+    });
 };
 
-
-
-//showCanvas();
 
 function showCanvasAgain(map_id){
 	$('#map_canvas2').gmap(
@@ -92,15 +110,6 @@ function showCanvasAgain(map_id){
 	});
 
 };
-//showCanvasAgain();
-
-function showMapThumbnail(){
-	$('.map_thumbnail').gmap(
-		{ 'center': correctCheckpoints[0].latitude+','+correctCheckpoints[0].longitude, 'zoom':10, 'zoomControl':false, 'mapTypeControl':false , 'streetViewControl':false, 'draggable':false, 'callback':function() {
-		}
-	});
-
-};
 
 
 /***************************************************************************************************************************************************
@@ -110,40 +119,36 @@ function showMapThumbnail(){
 
 $(document).ready(function(e){
 
-	// $.ajaxSetup({ cache: false });
 
-    // alert('loaded')
 
 /******************************************
 /* PAGE TRANSITIONS & LOGIC              
 /*******************************************/
 
-// $("#location_selector").on('click', function{
-// alert('location selected')
-
-// });
-
-
-//Load latest course into correctCheckpoints
-
-function getCorrectCheckpoints(map_id){
-    $.getJSON("http://www.orienteer.it/map_points", {map_id: map_id}, function(data){
-    correctCheckpoints=data;
-    }).error(function(){
-    navigator.notification.alert("There was an error.",function(){},"Error")
-    })
-};
-
 //Check Facebook login
 $('#registerFacebook').on('click', function(e){
-	checkFacebookLogin();
+    checkFacebookLogin();
 });
 
 //Logout of Facebook
 $('#test').on('click', function(e){
-	logoutFacebook();
-	alert('logged out of Facebook')
+    logoutFacebook();
+    alert('logged out of Facebook')
 });
+
+//Load latest course into correctCheckpoints
+
+$('#continue').on('click', function(){
+    var location = $("#location_selector :selected").val()
+    if (!location || !location.length){
+        alert ('Please select your location')
+    }
+    else{
+        getCourses();
+        $.mobile.changePage('#coursePage'); //Transition to course page
+    }
+});
+
 
 // Alert to indicate when positioned is logged
 $('#logButton').on("click", function(e){
@@ -159,7 +164,7 @@ $('#logButton').on("click", function(e){
 				//Alert based on whether a valid checkpoint was found
 				validate(userCheckpoints[last], correctCheckpoints);
 		 		// Log position in userCheckpoints array
-			}, 750);
+         }, 750);
 	});	
 });
 
@@ -182,27 +187,24 @@ $('.startAgain').on('click', function(e){
 /* LOAD COURSES             
 /*******************************************/
 
-$('#continue').on('click', function(){
-	var location = $("#location_selector :selected").val()
-	if (!location || !location.length){
-		alert ('Please select your location')
-	}
-	else{
-		getCourses();
-		$.mobile.changePage('#coursePage'); //Transition to course page
-	}
-});
+function getCorrectCheckpoints(map_id){
+    $.getJSON("http://www.orienteer.it/map_points", {map_id: map_id}, function(data){
+        correctCheckpoints=data;
+    }).error(function(){
+        navigator.notification.alert("There was an error.",function(){},"Error")
+    })
+};
 
 function getCourses(){
  // alert('getCourses');
  var location = $("#location_selector :selected").val()
  $.getJSON( 'http://www.orienteer.it/map', {city: location}, function(data) { 
-   $.each( data, function(i, m) {
+     $.each( data, function(i, m) {
          // alert(m.name);
          $( "#courses" ).append( 
             "<div class ='course_wrapper' id='"+m.id+"'>"+
-            "<div class ='map_wrapper' id='map_wrapper'>"+
-            "</div>"+
+            // "<div class ='map_wrapper' id='map_wrapper'>"+
+            // "</div>"+
             "<div class='description_wrapper' id='description_wrapper'>"+
             "<div class='text_wrapper' id='text_wrapper'>"+
             "<p>"+m.name+"</p>"+
@@ -217,9 +219,9 @@ function getCourses(){
             map_id = $(this).attr('id');
             $('#map_canvas').gmap('destroy');
             $.when(getCorrectCheckpoints(map_id)).done($.mobile.changePage('#startPage'));  
-            }); 
+        }); 
      });
-}); 
+ }); 
 };
 
 $('#courseBack').on('click', function(){
@@ -474,9 +476,9 @@ function positionLog(a, callback){
     }, function(error){
     	logAlert('Warning','Failed to get GPS location','OK');
     }, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
-	} else {
-		logAlert('Warning','Failed to get GPS location','OK');
-	}
+} else {
+  logAlert('Warning','Failed to get GPS location','OK');
+}
 	//alert('In array' + a[0].latitude)
 	if (callback && typeof(callback) === "function") {  
         callback();  
@@ -492,13 +494,13 @@ function positionLog(a, callback){
 function createUser(name, email){
 	$.post("http://www.orienteer.it/mobile_user",{email: email, name: name, password: '42345678'}, function(data, success){
 			// alert("CREATE USER: " + data[0].id + "\nStatus: " + status);
-	});
+       });
 };
 
-function postScore(email, score, user_checkpoints){
-	$.post("http://www.orienteer.it/result",{score: score, map_id: '1', email: email},function(data, status){
+function postScore(email, score, user_checkpoints, map_id){
+	$.post("http://www.orienteer.it/result",{score: score, map_id: map_id, email: email},function(data, status){
 			// alert("RESULT POST: " + data + "\nStatus: " + status);
-	});
+       });
 }
 
 function postResult(name, email, score, user_checkpoints){
