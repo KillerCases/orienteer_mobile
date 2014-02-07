@@ -120,13 +120,13 @@ function showCanvasAgain(map_id){
 $(document).ready(function(e){
 
 
-
 /******************************************
 /* PAGE TRANSITIONS & LOGIC              
 /*******************************************/
 
 //Check Facebook login
 $('#registerFacebook').on('click', function(e){
+    console.log('clicked registerFacebook')
     checkFacebookLogin();
 });
 
@@ -202,17 +202,17 @@ function getCourses(){
      $.each( data, function(i, m) {
          // alert(m.name);
          $( "#courses" ).append( 
-            "<div class ='course_wrapper' id='"+m.id+"'>"+
+            "<div class ='course_wrapper buttonStyle' id='"+m.id+"'>"+
             // "<div class ='map_wrapper' id='map_wrapper'>"+
             // "</div>"+
-            "<div class='description_wrapper' id='description_wrapper'>"+
+            // "<div class='description_wrapper' id='description_wrapper'>"+
             "<div class='text_wrapper' id='text_wrapper'>"+
             "<p>"+m.name+"</p>"+
             "</div>"+ 
             "<div class = 'arrow_wrapper'>"+
             "<div class='arrow_right'></div>"+
             "</div>"+ 
-            "</div>"+                
+            // "</div>"+                
             "</div>"
             )
          $('#courses').on('click', '.course_wrapper', function() {
@@ -301,6 +301,7 @@ function getFacebookEmail(){
 //Login to facebook if not already
 function promptFacebookLogin() {
 	//alert('starting login')
+    console.log('Starting Facebook login')
 	FB.login(
 		function(response) {
 			if (response.session) {
@@ -317,6 +318,7 @@ function promptFacebookLogin() {
 function checkFacebookLogin(){
 	FB.getLoginStatus(function(response) {
 		if (response.status == 'connected') {
+            console.log('Connected to Facebook')
     // the user is logged in and has authenticated your
     // app, and response.authResponse supplies
     // the user's ID, a valid access token, a signed
@@ -335,6 +337,7 @@ function checkFacebookLogin(){
     alert("Not_authorized");
 } else {
     // the user isn't logged in to Facebook.
+    console.log('Not connected to Facebook')
     promptFacebookLogin();
     $.mobile.changePage('#coursePage');
 }

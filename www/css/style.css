@@ -1,16 +1,9 @@
-/* 
-Project Name: Blank Template
-Client: Your Client
-Author: Your Name
-Developer @GA in NYC
-*/
-
 /******************************************
 /* NOTES                   
 /*******************************************/
-Electric Blue #2C75FF
+/*Electric Blue #2C75FF
 Electric Green #00FF00
-Neon Yellow #ffff00
+Neon Yellow #ffff00*/
 
 /******************************************
 /* SETUP                   
@@ -185,8 +178,6 @@ footer {
 /* LOGO               
 /*******************************************/
 
-
-
 #logo{
      border-left: 50px solid #00FF00;
      border-right: 50px solid white;
@@ -246,52 +237,38 @@ footer {
 
 .course_wrapper{
      width:100%;
-     border:2px solid gray;
+     height:30px;
      display:block;
-/*     height:100%;*/
-     margin:0 0 2% 0;
+     margin:0 0 2% 0;    
+     padding: 2% auto;
+     background-image: -webkit-linear-gradient(bottom, #00FF00, white); /* For Chrome and Safari */
+     border-radius:5px;
 }
 
-.map_thumbnail{
-     width:100%;
-     height:100px;
-     display:block;
-     margin:0 auto;
-     padding:0;
-}
-
-.description_wrapper{
-     display:block;
-     width:100%;
-     height:20px;
-/*     padding:0 20% 0 2%;*/
-/*     margin:0 20% 0 2%;*/
+.course_wrapper p{
+     text-align: left;
+     color:black;
 }
 
 .text_wrapper {
+     width:50%;
+     height:100%;
      display:block;
      float:left;
      text-align: left;
      padding:0 0 2% 2%;
+     background-color: 
 }
 
-.arrow_wrapper{
-     display:block;
-     width:20px;
-     height: 20px;
-     margin:0 auto;
-     float:right;
-}
 
 .arrow_right {
-     width: 0; 
-     height: 0; 
-     border-top: 10px solid transparent;
-     border-bottom: 10px solid transparent;
-     border-left: 10px solid gray;     
+     border-top: 15px solid transparent;
+     border-bottom: 15px solid transparent;
+     border-left: 15px solid black;    
+     display:block;
+     float: right; 
+     margin: 0 auto;   
 }
-
-
 
 
 /******************************************
@@ -379,87 +356,6 @@ footer {
      width:100%;
 }
 
-table{
-     width:100%;
-     line-height:2;
-     margin: 50px 10px 50px 10px;
-}
 
-.gridtable {
-     border-width: 1px;
-     table-layout:fixed;
-     width:98%;
-
-}
-.gridtable td {
-     border-width: 1px;
-     padding: 1%;
-     border: 1px solid white;
-}
-
-.gridtable tr:nth-child(odd) {
-     background: #CCC ;
-}
-.gridtable tr:nth-child(even) {
-     background: white ;
-}
-
-.gridtable th {
-     text-align:left;
-     border: 1px solid white;
-     background:white;
-     font-weight:bold;
-}
-
-/*----------------------------------------------------------------------------- 
-=05 SOCIAL MEDIA  
------------------------------------------------------------------------------*/
-
-
-
-#socialmedia {
-     margin:0 auto;
-     width:200px;
-}
-
-#socialmedia ul li {
-      display:block;
-      float:left;
-      width:60px;
-      height:60px;
-      background:blue;   
-      text-indent:-9999em;
-}
-
-#socialmedia ul li.linkedin {
-     background:url('../images/socialnav.png') 0px 64px;
-}
-#socialmedia ul li.twitter {
-     background:url('../images/socialnav.png') -60px 64px; 
-}
-#socialmedia ul li.facebook {
-     background:url('../images/socialnav.png') -120px 64px; 
-}
-#socialmedia ul li.rss {
-     background:url('../images/socialnav.png') -180px 64px; 
-}
-
-
-
-#socialmedia ul li.linkedin:hover {
-     background:url('../images/socialnav.png') 0px 0px; 
-}
-
-#socialmedia ul li.twitter:hover {
-     background:url('../images/socialnav.png') -60px 0px; 
-}
-
-#socialmedia ul li.facebook:hover {
-     background:url('../images/socialnav.png') -120px 0px; 
-}
-
-#socialmedia ul li.rss:hover {
-     background:url('../images/socialnav.png') -180px 0px; 
-}
 
 
