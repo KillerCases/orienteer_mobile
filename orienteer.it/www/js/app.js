@@ -127,7 +127,15 @@ $(document).ready(function(e){
 //Check Facebook login
 $('#registerFacebook').on('click', function(e){
     console.log('clicked registerFacebook')
-    checkFacebookLogin();
+    var location = $("#location_selector :selected").val()
+    if (!location || !location.length){
+        alert ('Please select your location')
+    }
+    else{
+        getCourses();
+        checkFacebookLogin();
+    }
+    
 });
 
 //Logout of Facebook

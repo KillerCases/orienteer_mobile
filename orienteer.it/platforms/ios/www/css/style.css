@@ -236,21 +236,25 @@ footer {
 /*******************************************/
 
 .course_wrapper{
-     width:100%;
-     height:30px;
-     display:block;
-     margin:0 0 2% 0;    
-     padding: 2% auto;
+     border: 2px solid #00FF00;
      background-image: -webkit-linear-gradient(bottom, #00FF00, white); /* For Chrome and Safari */
+     line-height:1;
+     width:100%;
+     height:50px;
+     display:block;
+     margin:0 0 5% 0;    
+     /*padding: 2% auto;*/
      border-radius:5px;
 }
 
-.course_wrapper p{
-     text-align: left;
+.course_wrapper h3{
+     text-align:center;
      color:black;
+     line-height:0;
 }
 
-.text_wrapper {
+
+/*.text_wrapper {
      width:50%;
      height:100%;
      display:block;
@@ -258,17 +262,16 @@ footer {
      text-align: left;
      padding:0 0 2% 2%;
      background-color: 
-}
+}*/
 
-
-.arrow_right {
-     border-top: 15px solid transparent;
-     border-bottom: 15px solid transparent;
-     border-left: 15px solid black;    
+/*.arrow_right {
+     border-top: 14px solid transparent;
+     border-bottom: 14px solid transparent;
+     border-left: 14px solid gray;    
      display:block;
      float: right; 
      margin: 0 auto;   
-}
+}*/
 
 
 /******************************************

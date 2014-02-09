@@ -12,7 +12,7 @@
     </feature>
     <name>OrienteerIt</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Urban orienteering app on iOS and Android.
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
         PhoneGap Team

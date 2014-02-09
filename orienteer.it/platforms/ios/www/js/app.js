@@ -127,7 +127,15 @@ $(document).ready(function(e){
 //Check Facebook login
 $('#registerFacebook').on('click', function(e){
     console.log('clicked registerFacebook')
-    checkFacebookLogin();
+    var location = $("#location_selector :selected").val()
+    if (!location || !location.length){
+        alert ('Please select your location')
+    }
+    else{
+        getCourses();
+        checkFacebookLogin();
+    }
+    
 });
 
 //Logout of Facebook
@@ -202,30 +210,31 @@ function getCourses(){
      $.each( data, function(i, m) {
          // alert(m.name);
          $( "#courses" ).append( 
-            "<div class ='course_wrapper buttonStyle' id='"+m.id+"'>"+
-            // "<div class ='map_wrapper' id='map_wrapper'>"+
-            // "</div>"+
-            // "<div class='description_wrapper' id='description_wrapper'>"+
-            "<div class='text_wrapper' id='text_wrapper'>"+
-            "<p>"+m.name+"</p>"+
-            "</div>"+ 
-            "<div class = 'arrow_wrapper'>"+
-            "<div class='arrow_right'></div>"+
-            "</div>"+ 
+            "<div class ='course_wrapper' id='"+m.id+"'>"+
+            // "<div class='text_wrapper' id='text_wrapper'>"+
+            "<h3>"+m.name+"</h3>"+
+            // "</div>"+ 
+            // "<div class = 'arrow_wrapper'>"+
+            // "<div class='arrow_right'></div>"+
             // "</div>"+                
             "</div>"
             )
          $('#courses').on('click', '.course_wrapper', function() {
             map_id = $(this).attr('id');
             $('#map_canvas').gmap('destroy');
-            $.when(getCorrectCheckpoints(map_id)).done($.mobile.changePage('#startPage'));  
+            $.when(getCorrectCheckpoints(map_id)).done($.mobile.changePage('#startPage'));
         }); 
      });
  }); 
 };
 
 $('#courseBack').on('click', function(){
-    $.mobile.changePage('#coursePage')
+    $.mobile.changePage('#coursePage');
+})
+
+$('#back_to_splash').on('click', function(){
+	$("#courses").empty();
+	$.mobile.changePage('#splash');
 })
 
 

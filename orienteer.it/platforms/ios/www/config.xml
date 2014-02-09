@@ -2,7 +2,7 @@
 <widget id="it.orienteer" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>OrienteerIt</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Urban orienteering app on iOS and Android.
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
         PhoneGap Team
