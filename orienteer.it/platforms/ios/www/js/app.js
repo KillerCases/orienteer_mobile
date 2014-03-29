@@ -84,6 +84,7 @@ $(document).on("pageshow", "#playPage", function () {
 
 
 function showCanvas(map_id){
+	alert(map_id)
     $('#map_canvas').gmap(
         { 'center': correctCheckpoints[0].latitude+','+correctCheckpoints[0].longitude, 'zoom':10  , 'callback':function() {
             var self = this;
@@ -219,20 +220,20 @@ function getCourses(){
      $.each( data, function(i, m) {
          // alert(m.name);
          $( "#courses" ).append( 
-            "<div class ='course_wrapper buttonStyle' id='"+m.id+"'>"+
+            // "<div class ='course_wrapper'>"+
             // "<div class ='map_wrapper' id='map_wrapper'>"+
             // "</div>"+
             // "<div class='description_wrapper' id='description_wrapper'>"+
-            "<div class='text_wrapper' id='text_wrapper'>"+
-            "<p>"+m.name+"</p>"+
-            "</div>"+ 
-            "<div class = 'arrow_wrapper'>"+
-            "<div class='arrow_right'></div>"+
-            "</div>"+ 
-            // "</div>"+                
+            "<div class='text_wrapper buttonStyle' id='"+m.id+"''>"+
+            "<h3>"+m.name+"</h3>"+
             "</div>"
+            // "<div class = 'arrow_wrapper'>"+
+            // "<div class='arrow_right'></div>"+
+            // "</div>"+ 
+            // // "</div>"+                
+            // "</div>"
             )
-         $('#courses').on('click', '.course_wrapper', function() {
+         $('#courses').on('click', '.text_wrapper', function() {
             map_id = $(this).attr('id');
             $('#map_canvas').gmap('destroy');
             $.when(getCorrectCheckpoints(map_id)).done($.mobile.changePage('#startPage'));  
