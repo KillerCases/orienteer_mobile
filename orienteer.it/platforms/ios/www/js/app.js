@@ -62,17 +62,20 @@ var map_id =3; // Default to map id 1
 // NOTES: pageshow event is fired every time the page loads, not just once. showCanvas needs to be called after pageShow as needs heigh dimensions
 
 $(document).on("pagecreate", "#page_splash", function () { 
-// alert('splash');
+	// alert('splash');
 });
 $(document).on("pageshow", "#coursePage", function () { 
-//alert('start');
+	//alert('start');
 });
+$(document).on("pagebeforehide", '#coursePage', function(){
+	$('#courses').empty()
+})
 $(document).on("pageshow", "#startPage", function () { 
-showCanvas(map_id);
+	showCanvas(map_id);
 });
 $(document).on("pageshow", "#playPage", function () { 
-//alert('play');
-showCanvasAgain(map_id);
+	//alert('play');
+	showCanvasAgain(map_id);
 });
 
 /******************************************
@@ -190,7 +193,9 @@ $('.startAgain').on('click', function(e){
 });
 
 $('#back_location').on('click', function(){
-	$('#course').empty();
+
+	// $.when($('#course').empty()).done($.mobile.changePage('#page_splash')); 
+	// $('#course').empty();
 	$.mobile.changePage('#page_splash');
 })
   
