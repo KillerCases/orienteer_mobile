@@ -59,16 +59,16 @@ var map_id =3; // Default to map id 1
 /* CREATE PAGES       
 /*******************************************/
 
-// NOTES: pageshow event is fired every time the page loads, not just once. showCanvas needs to be called after pageShow as needs heigh dimensions
+// NOTES: pageshow event is fired every time the page loads, not just once. showCanvas needs to be called after pageShow as needs height dimensions
 
 $(document).on("pagecreate", "#page_splash", function () { 
 	// alert('splash');
 });
-$(document).on("pageshow", "#coursePage", function () { 
+$(document).on("pageshow", "#page_course", function () { 
 	//alert('start');
 });
-$(document).on("pagebeforehide", '#coursePage', function(){
-	$('#courses').empty()
+$(document).on("pagebeforehide", '#page_course', function(){
+	$('#courses').empty() // Clear old courses from the page
 })
 $(document).on("pageshow", "#startPage", function () { 
 	showCanvas(map_id);
@@ -84,7 +84,7 @@ $(document).on("pageshow", "#playPage", function () {
 
 
 function showCanvas(map_id){
-	alert(map_id)
+	// alert(map_id)
     $('#map_canvas').gmap(
         { 'center': correctCheckpoints[0].latitude+','+correctCheckpoints[0].longitude, 'zoom':10  , 'callback':function() {
             var self = this;
@@ -156,7 +156,7 @@ $('#continue').on('click', function(){
     }
     else{
         getCourses();
-        $.mobile.changePage('#coursePage'); //Transition to course page
+        $.mobile.changePage('#page_course'); //Transition to course page
     }
 });
 
@@ -185,7 +185,7 @@ $('.startAgain').on('click', function(e){
 	confirmed.length = 0;
 	userScore = 0; //Reset userscore 
 	result = 0; // Reset Result
-	$.mobile.changePage('#startPage'); //Transition to start page
+	$.mobile.changePage('#page_course'); //Transition to start page
 	$('#counter').html('30');
 	setTimeout( function(){
 		$('#map_canvas2').gmap('option', 'center', new google.maps.LatLng(correctCheckpoints[0].latitude,correctCheckpoints[0].longitude));
@@ -193,10 +193,7 @@ $('.startAgain').on('click', function(e){
 	},1000);
 });
 
-$('#back_location').on('click', function(){
-
-	// $.when($('#course').empty()).done($.mobile.changePage('#page_splash')); 
-	// $('#course').empty();
+$('#back_splash').on('click', function(){
 	$.mobile.changePage('#page_splash');
 })
   
@@ -242,10 +239,9 @@ function getCourses(){
  }); 
 };
 
-$('#courseBack').on('click', function(){
-    $.mobile.changePage('#coursePage')
+$('#back_course').on('click', function(){
+    $.mobile.changePage('#page_course')
 })
-
 
 /******************************************
 /* START BUTTON & TIMER              
@@ -348,17 +344,17 @@ function checkFacebookLogin(){
     //getFacebookName();
     //getFacebookEmail();
    //alert("Connected");
-   $.mobile.changePage('#coursePage');
+   $.mobile.changePage('#page_course');
 } else if (response.status == 'not_authorized') {
     // the user is logged in to Facebook, 
     // but has not authenticated your app
-    $.mobile.changePage('#coursePage');
+    $.mobile.changePage('#page_course');
     alert("Not_authorized");
 } else {
     // the user isn't logged in to Facebook.
     alert('Not connected to Facebook')
     promptFacebookLogin();
-    $.mobile.changePage('#coursePage');
+    $.mobile.changePage('#page_course');
 }
 });
 }
