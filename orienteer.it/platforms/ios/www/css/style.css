@@ -165,7 +165,7 @@ footer {
 
 #registerFacebook{
      display:block;
-     margin:0 auto;
+     margin:10% auto;
      width:200px;
 }
 
@@ -200,13 +200,13 @@ footer {
      -webkit-transform: rotate(45deg);
 }
 
-#logo:before{
+/*#logo:before{
      content:"N";
      position:absolute;
      top: -37px;
      left: 24px;
      font-size:25px;
-}
+}*/
 .arrowTip{
      border-right: 3px solid black;
      border-top: 3px solid black;
@@ -214,13 +214,13 @@ footer {
      width: 12px;
      position: absolute;
      top: 32px;
-     left: 47px;
+     left: 50px;
 }
 #outline{
      border:3px solid #CCC;
      border-radius: 5px;
-     height:97px;
-     width:97px;
+     height:100px;
+     width:100px;
      display:block;
      position:absolute;
      z-index:1;

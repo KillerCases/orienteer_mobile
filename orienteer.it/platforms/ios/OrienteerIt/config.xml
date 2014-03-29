@@ -29,6 +29,9 @@
         PhoneGap Team
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
+    <feature name="Notification">
+        <param name="wp-package" value="Notification"/>
+    </feature>
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
@@ -72,4 +75,7 @@
         <param name="ios-package" value="FacebookConnectPlugin" />
     </feature>
     <access origin="http://127.0.0.1*" />
+    <feature name="Notification">
+        <param name="ios-package" value="CDVNotification" />
+    </feature>
 </widget>

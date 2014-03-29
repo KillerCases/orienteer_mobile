@@ -119,6 +119,8 @@ function showCanvasAgain(map_id){
 
 $(document).ready(function(e){
 
+	navigator.notification.alert('phonegap a  go');
+
 
 /******************************************
 /* PAGE TRANSITIONS & LOGIC              
@@ -183,7 +185,7 @@ $('.startAgain').on('click', function(e){
 	userScore = 0; //Reset userscore 
 	result = 0; // Reset Result
 	$.mobile.changePage('#startPage'); //Transition to start page
-	$('#counter').html('30');
+	$('#counter').html('45');
 	setTimeout( function(){
 		$('#map_canvas2').gmap('option', 'center', new google.maps.LatLng(correctCheckpoints[0].latitude,correctCheckpoints[0].longitude));
 		$('#map_canvas2').gmap('option', 'zoom', 10)
@@ -261,7 +263,7 @@ $('#startButton').on('click', function(e){
 	var timer = $.timer(function() {
 		var currentDate = new Date ();
 		var currentTime = currentDate.getTime()/1000; // Give time in seconds
-		remaining = parseInt(15 + (startTime - currentTime)); //3600 seconds = 1 hour
+		remaining = parseInt(2700 + (startTime - currentTime)); //3600 seconds = 1 hour, 2700 seconds = 45 mins
 		if(remaining >=0){	
 			$('#counter').html(Math.ceil(remaining/60));	
 		}
@@ -427,6 +429,7 @@ function dedup(a, c){
 function validate(d, b) {
 	var resultofCompare = compare(d, b)
 	if(resultofCompare){
+		navigator.notification.alert('test navigator notification');
 		logAlert('Success!','You logged a checkpoint','OK');
 	}
 	else{
