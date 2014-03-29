@@ -61,7 +61,7 @@ var map_id =3; // Default to map id 1
 
 // NOTES: pageshow event is fired every time the page loads, not just once. showCanvas needs to be called after pageShow as needs heigh dimensions
 
-$(document).on("pagecreate", "#splash", function () { 
+$(document).on("pagecreate", "#page_splash", function () { 
 // alert('splash');
 });
 $(document).on("pageshow", "#coursePage", function () { 
@@ -189,6 +189,11 @@ $('.startAgain').on('click', function(e){
 	},1000);
 });
 
+$('#back_location').on('click', function(){
+	$('#course').empty();
+	$.mobile.changePage('#page_splash');
+})
+  
 
 /******************************************
 /* LOAD COURSES             
