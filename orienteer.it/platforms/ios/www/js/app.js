@@ -119,8 +119,6 @@ function showCanvasAgain(map_id){
 
 $(document).ready(function(e){
 
-	navigator.notification.alert('phonegap a  go');
-
 
 /******************************************
 /* PAGE TRANSITIONS & LOGIC              
@@ -143,7 +141,6 @@ $('#registerFacebook').on('click', function(e){
 //Logout of Facebook
 $('#test').on('click', function(e){
     logoutFacebook();
-    alert('logged out of Facebook')
 });
 
 //Load latest course into correctCheckpoints
@@ -185,7 +182,7 @@ $('.startAgain').on('click', function(e){
 	userScore = 0; //Reset userscore 
 	result = 0; // Reset Result
 	$.mobile.changePage('#startPage'); //Transition to start page
-	$('#counter').html('45');
+	$('#counter').html('30');
 	setTimeout( function(){
 		$('#map_canvas2').gmap('option', 'center', new google.maps.LatLng(correctCheckpoints[0].latitude,correctCheckpoints[0].longitude));
 		$('#map_canvas2').gmap('option', 'zoom', 10)
@@ -212,31 +209,30 @@ function getCourses(){
      $.each( data, function(i, m) {
          // alert(m.name);
          $( "#courses" ).append( 
-            "<div class ='course_wrapper' id='"+m.id+"'>"+
-            // "<div class='text_wrapper' id='text_wrapper'>"+
-            "<h3>"+m.name+"</h3>"+
-            // "</div>"+ 
-            // "<div class = 'arrow_wrapper'>"+
-            // "<div class='arrow_right'></div>"+
+            "<div class ='course_wrapper buttonStyle' id='"+m.id+"'>"+
+            // "<div class ='map_wrapper' id='map_wrapper'>"+
+            // "</div>"+
+            // "<div class='description_wrapper' id='description_wrapper'>"+
+            "<div class='text_wrapper' id='text_wrapper'>"+
+            "<p>"+m.name+"</p>"+
+            "</div>"+ 
+            "<div class = 'arrow_wrapper'>"+
+            "<div class='arrow_right'></div>"+
+            "</div>"+ 
             // "</div>"+                
             "</div>"
             )
          $('#courses').on('click', '.course_wrapper', function() {
             map_id = $(this).attr('id');
             $('#map_canvas').gmap('destroy');
-            $.when(getCorrectCheckpoints(map_id)).done($.mobile.changePage('#startPage'));
+            $.when(getCorrectCheckpoints(map_id)).done($.mobile.changePage('#startPage'));  
         }); 
      });
  }); 
 };
 
 $('#courseBack').on('click', function(){
-    $.mobile.changePage('#coursePage');
-})
-
-$('#back_to_splash').on('click', function(){
-	$("#courses").empty();
-	$.mobile.changePage('#splash');
+    $.mobile.changePage('#coursePage')
 })
 
 
@@ -263,7 +259,7 @@ $('#startButton').on('click', function(e){
 	var timer = $.timer(function() {
 		var currentDate = new Date ();
 		var currentTime = currentDate.getTime()/1000; // Give time in seconds
-		remaining = parseInt(2700 + (startTime - currentTime)); //3600 seconds = 1 hour, 2700 seconds = 45 mins
+		remaining = parseInt(15 + (startTime - currentTime)); //3600 seconds = 1 hour
 		if(remaining >=0){	
 			$('#counter').html(Math.ceil(remaining/60));	
 		}
@@ -316,7 +312,7 @@ function promptFacebookLogin() {
 	FB.login(
 		function(response) {
 			if (response.session) {
-				alert('logged in');
+				console.log('logged in');
 			} else {
 				//alert('not logged in');
 			}
@@ -327,6 +323,7 @@ function promptFacebookLogin() {
 
 // Check whether user is logged in and execute logic based on this
 function checkFacebookLogin(){
+	console.log('about to check login status')
 	FB.getLoginStatus(function(response) {
 		if (response.status == 'connected') {
             console.log('Connected to Facebook')
@@ -348,7 +345,7 @@ function checkFacebookLogin(){
     alert("Not_authorized");
 } else {
     // the user isn't logged in to Facebook.
-    console.log('Not connected to Facebook')
+    alert('Not connected to Facebook')
     promptFacebookLogin();
     $.mobile.changePage('#coursePage');
 }
@@ -358,6 +355,7 @@ function checkFacebookLogin(){
 //Log user out of Facebook
 function logoutFacebook(){
 	FB.logout(function(response) {
+		alert('logged out of Facebook')
   // user is now logged out
 
 });
@@ -429,7 +427,6 @@ function dedup(a, c){
 function validate(d, b) {
 	var resultofCompare = compare(d, b)
 	if(resultofCompare){
-		navigator.notification.alert('test navigator notification');
 		logAlert('Success!','You logged a checkpoint','OK');
 	}
 	else{

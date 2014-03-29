@@ -58,7 +58,6 @@
 
     <!-- Phonegap -->
     <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="phonegap.js"></script>
     <script type="text/javascript" src="js/cdv-plugin-fb-connect.js"></script>
     <script type="text/javascript" src="js/facebook_js_sdk.js"></script>
 
@@ -84,7 +83,7 @@
             </div>
             
             <div class='welcome_text'>
-                <h3>Urban Orienteering<br> in your own time<br> Freestyle.</h3>
+                <h3>Weekly courses, against others, anytime.</h3>
             </div>
 
             <select data-native-menu="false" id='location_selector'>
@@ -105,9 +104,9 @@
                 </a>
             </div>
 
-            <!-- <div class='welcome_text' id='test'>
+            <div class='welcome_text' id='test'>
                 <p>LOGOUT TEST</p>
-            </div> -->
+            </div>
             
         </div><!--content-->
     </div>
@@ -129,7 +128,7 @@
 
         </div>
         
-        <a id='back_to_splash'><p>Back to locations</p></a>
+        <a href='#splash'><p>Back to locations</p></a>
             
         </div><!--content-->
     </div>
@@ -156,7 +155,7 @@
                 <a href='#playPage'><h3>Start</h3></a>
             </div>
             
-            <p>You have 45 mins to visit & log checkpoints.<br> Otherwise, it's Freestyle!</p>
+            <p>You have 1 hour to log as many checkpoints as possible!</p>
 
             <a id='courseBack'><p>Back to courses</p></a>
             
@@ -174,7 +173,7 @@
         <div data-role='content'>
             
             <div id = 'instructions' class='infoStyle'>
-                <p>Time Remaining: <span id='counter'>45</span> mins</p>
+                <p>Time Remaining: <span id='counter'>30</span> mins</p>
             </div>
             
             <div id='map_canvas2'></div>
@@ -183,7 +182,7 @@
                 <h3>Log Checkpoint</h3>
             </div>
             
-            <p>You have 45 mins to visit & log checkpoints.<br> Otherwise, it's Freestyle!</p>
+            <p>You have 1 hour to log as many checkpoints as possible!</p>
 
 <!--
             <div class='welcome_text' class='startAgain' id='startAgainLink'>
@@ -218,8 +217,7 @@
             <div class='startAgain'>
                 <p>Start Again</p>
             </div>
-            <p>Please visit www.orienteer.it to view results and sign up for our newsletter.</p>
-            <p>Thank you!</p>
+            <p>New courses will appear every month. Please sign up for our newsletter to get notified. Otherwise, feel free to try each course as many times as you like! Results will be posted online at orienteer.it</p>
             
             <!--
             <p>Share with your friends</p>
