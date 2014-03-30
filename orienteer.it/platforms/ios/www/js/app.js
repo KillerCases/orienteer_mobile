@@ -52,9 +52,6 @@ var confirmed = []; // Array to hold GPS locations that have been validated and 
 var result = 0;
 var map_id =3; // Default to map id 1
 
-//var mapUrl;
-//var count;
-
 /******************************************
 /* CREATE PAGES       
 /*******************************************/
@@ -69,13 +66,14 @@ $(document).on("pageshow", "#page_course", function () {
 });
 $(document).on("pagebeforehide", '#page_course', function(){
 	$('#courses').empty() // Clear old courses from the page
-})
+});
 $(document).on("pageshow", "#startPage", function () { 
 	showCanvas(map_id);
 });
 $(document).on("pageshow", "#playPage", function () { 
 	//alert('play');
 	showCanvasAgain(map_id);
+
 });
 
 /******************************************
@@ -130,13 +128,13 @@ $(document).ready(function(e){
 
 //Check Facebook login
 $('#registerFacebook').on('click', function(e){
-    console.log('clicked registerFacebook')
+    // console.log('clicked registerFacebook')
     var location = $("#location_selector :selected").val()
     if (!location || !location.length){
         alert ('Please select your location')
     }
     else{
-        getCourses();
+        getCourses(location);
         checkFacebookLogin();
     }
     
@@ -147,15 +145,14 @@ $('#test').on('click', function(e){
     logoutFacebook();
 });
 
-//Load latest course into correctCheckpoints
-
+// Transition from Splash to Course Page
 $('#continue').on('click', function(){
     var location = $("#location_selector :selected").val()
     if (!location || !location.length){
         alert ('Please select your location')
     }
     else{
-        getCourses();
+        getCourses(location);
         $.mobile.changePage('#page_course'); //Transition to course page
     }
 });
@@ -193,9 +190,14 @@ $('.startAgain').on('click', function(e){
 	},1000);
 });
 
-$('#back_splash').on('click', function(){
+$('.back_splash').on('click', function(){
+	// getCourses(location_selected);
 	$.mobile.changePage('#page_splash');
 })
+
+// $('#back_course').on('click', function(){
+//     $.mobile.changePage('#page_course')
+// })
   
 
 /******************************************
@@ -210,25 +212,14 @@ function getCorrectCheckpoints(map_id){
     })
 };
 
-function getCourses(){
- // alert('getCourses');
- var location = $("#location_selector :selected").val()
+function getCourses(location){
+	// var location = location;
  $.getJSON( 'http://www.orienteer.it/map', {city: location}, function(data) { 
      $.each( data, function(i, m) {
-         // alert(m.name);
          $( "#courses" ).append( 
-            // "<div class ='course_wrapper'>"+
-            // "<div class ='map_wrapper' id='map_wrapper'>"+
-            // "</div>"+
-            // "<div class='description_wrapper' id='description_wrapper'>"+
             "<div class='text_wrapper buttonStyle' id='"+m.id+"''>"+
             "<h3>"+m.name+"</h3>"+
             "</div>"
-            // "<div class = 'arrow_wrapper'>"+
-            // "<div class='arrow_right'></div>"+
-            // "</div>"+ 
-            // // "</div>"+                
-            // "</div>"
             )
          $('#courses').on('click', '.text_wrapper', function() {
             map_id = $(this).attr('id');
@@ -239,9 +230,7 @@ function getCourses(){
  }); 
 };
 
-$('#back_course').on('click', function(){
-    $.mobile.changePage('#page_course')
-})
+
 
 /******************************************
 /* START BUTTON & TIMER              
