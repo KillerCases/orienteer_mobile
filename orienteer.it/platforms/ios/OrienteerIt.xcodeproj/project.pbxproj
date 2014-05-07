@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
@@ -19,6 +20,8 @@
 		5AEE5B35173C68D80009041E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEE5B34173C68D80009041E /* CoreLocation.framework */; };
 		5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
 		69CF48717B7C4A678A9DA197 /* CDVNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE14D200DAE4AFF96CA31AC /* CDVNotification.m */; };
+		B05CB15518EA4AB1004BD97F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B05CB15418EA4AB1004BD97F /* Images.xcassets */; };
+		B0C0EE7F18F2BC17009E157D /* icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C0EE7E18F2BC17009E157D /* icon-120.png */; };
 		B0DE6DE818A7A37800166BA2 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0DE6DE718A7A37800166BA2 /* FacebookSDK.framework */; };
 		B0DE6DEC18A7A7EF00166BA2 /* FacebookConnectPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DE6DEB18A7A7EF00166BA2 /* FacebookConnectPlugin.m */; };
 		B0DE6E1E18A81DAD00166BA2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B0DE6E1D18A81DAD00166BA2 /* Icon.png */; };
@@ -70,6 +73,13 @@
 		8D1107310486CEB800E47090 /* OrienteerIt-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "OrienteerIt-Info.plist"; path = "../OrienteerIt-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A3076530D0A94ABBB7E753D9 /* CDVNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVNotification.h; path = org.apache.cordova.dialogs/CDVNotification.h; sourceTree = "<group>"; };
 		ABA95EAFF74A43ECB88F464E /* AudioToolbox.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B05CB14F18EA3DF2004BD97F /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		B05CB15018EA4765004BD97F /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
+		B05CB15118EA4891004BD97F /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		B05CB15218EA4908004BD97F /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
+		B05CB15318EA4969004BD97F /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
+		B05CB15418EA4AB1004BD97F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = OrienteerIt/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		B0C0EE7E18F2BC17009E157D /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120.png"; sourceTree = "<group>"; };
 		B0DE6DE718A7A37800166BA2 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		B0DE6DEA18A7A7EF00166BA2 /* FacebookConnectPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookConnectPlugin.h; sourceTree = "<group>"; };
 		B0DE6DEB18A7A7EF00166BA2 /* FacebookConnectPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookConnectPlugin.m; sourceTree = "<group>"; };
@@ -182,6 +192,12 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				B05CB15318EA4969004BD97F /* Icon-76.png */,
+				B0C0EE7E18F2BC17009E157D /* icon-120.png */,
+				B05CB15218EA4908004BD97F /* Icon-76@2x.png */,
+				B05CB15118EA4891004BD97F /* Icon-72@2x.png */,
+				B05CB15018EA4765004BD97F /* Icon-60@2x.png */,
+				B05CB14F18EA3DF2004BD97F /* Icon@2x.png */,
 				F840E1F0165FE0F500CFE078 /* config.xml */,
 				301BF56E109A69640062928A /* www */,
 				301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */,
@@ -208,6 +224,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B05CB15418EA4AB1004BD97F /* Images.xcassets */,
 				B0DE6DF118A7AF1E00166BA2 /* DeprecatedHeaders */,
 				30A0434214DC770100060A13 /* de.lproj */,
 				30A0434514DC770100060A13 /* se.lproj */,
@@ -426,9 +443,11 @@
 				B0DE6E2018A81DD400166BA2 /* Icon@2x.png in Resources */,
 				F840E1F1165FE0F500CFE078 /* config.xml in Resources */,
 				B0DE6E2618A81E0C00166BA2 /* Default@2x.png in Resources */,
+				B05CB15518EA4AB1004BD97F /* Images.xcassets in Resources */,
 				B0DE6E2518A81E0C00166BA2 /* Default.png in Resources */,
 				1F766FE113BBADB100FB74C0 /* Localizable.strings in Resources */,
 				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
+				B0C0EE7F18F2BC17009E157D /* icon-120.png in Resources */,
 				B0DE6E2418A81E0C00166BA2 /* Default-568h@2x.png in Resources */,
 				30A0434814DC770100060A13 /* Localizable.strings in Resources */,
 				B17D859080AF4D64860D0D55 /* CDVNotification.bundle in Resources */,
@@ -517,6 +536,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -547,7 +568,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = OrienteerIt;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -555,6 +576,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -582,7 +605,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = OrienteerIt;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

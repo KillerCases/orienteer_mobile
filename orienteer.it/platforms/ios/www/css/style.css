@@ -195,39 +195,39 @@ footer {
      width: 100px;
      margin-left: -33px;
      position: absolute;
-     margin-top: 10px;
+     margin-top: 8px;
      border-left: 3px solid black;
      -webkit-transform: rotate(45deg);
 }
 
-#logo:before{
+/*#logo:before{
      content:"N";
      position:absolute;
      top: -37px;
      left: 24px;
      font-size:25px;
-}
+}*/
 .arrowTip{
      border-right: 3px solid black;
      border-top: 3px solid black;
      height: 12px;
      width: 12px;
      position: absolute;
-     top: 32px;
-     left: 47px;
+     top: 30px;
+     left: 50px;
 }
 #outline{
      border:3px solid #CCC;
      border-radius: 5px;
-     height:97px;
-     width:97px;
+     height:100px;
+     width:100px;
      display:block;
      position:absolute;
      z-index:1;
      float:right;
      left:-50px;
      top:-50px;
-     box-shadow:#CCC 8px 8px 8px 2px;
+     /*box-shadow:#CCC 8px 8px 8px 2px;*/
 
 }
 

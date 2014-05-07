@@ -84,7 +84,7 @@ $(document).on("pageshow", "#playPage", function () {
 function showCanvas(map_id){
 	// alert(map_id)
     $('#map_canvas').gmap(
-        { 'center': correctCheckpoints[0].latitude+','+correctCheckpoints[0].longitude, 'zoom':10  , 'callback':function() {
+        { 'center': correctCheckpoints[0].latitude+','+correctCheckpoints[0].longitude, 'zoom':10  , 'streetViewControl':false, 'mapTypeControl':false, 'callback':function() {
             var self = this;
             $.getJSON( 'http://www.orienteer.it/map_points', {map_id: map_id}, function(data) { 
                     // alert(data);
@@ -194,10 +194,6 @@ $('.back_splash').on('click', function(){
 	// getCourses(location_selected);
 	$.mobile.changePage('#page_splash');
 })
-
-// $('#back_course').on('click', function(){
-//     $.mobile.changePage('#page_course')
-// })
   
 
 /******************************************
@@ -241,8 +237,8 @@ $('#startButton').on('click', function(e){
 	var remaining = 0;
 
 	//GetUserName & Email
-	getFacebookName();
-	getFacebookEmail();
+	// getFacebookName();
+	// getFacebookEmail();
 
 	//Change toplay page
 	$.mobile.changePage('#playPage');
@@ -255,7 +251,7 @@ $('#startButton').on('click', function(e){
 	var timer = $.timer(function() {
 		var currentDate = new Date ();
 		var currentTime = currentDate.getTime()/1000; // Give time in seconds
-		remaining = parseInt(15 + (startTime - currentTime)); //3600 seconds = 1 hour
+		remaining = parseInt(180 + (startTime - currentTime)); //3600 seconds = 1 hour
 		if(remaining >=0){	
 			$('#counter').html(Math.ceil(remaining/60));	
 		}
@@ -269,9 +265,7 @@ $('#startButton').on('click', function(e){
 			postResult(fullName, userEmail, userScore, userCheckpoints); //Post results to server
 		}
 	});
-
 	timer.set({ time : 10000, autostart : true }); // time:60000 millisecs is 1 min, time:1000 millisecs is 1 second
-
 });
 
 }); // End Document Ready
@@ -289,7 +283,7 @@ function getFacebookName(){
 	FB.api('/me', function(response) {
 		fullName = response.name;
 		firstName = response.first_name;
-	//alert(firstName);
+	// alert(firstName);
 });
 }
 
@@ -330,8 +324,8 @@ function checkFacebookLogin(){
     // and signed request each expire
     var uid = response.authResponse.userID;
     var accessToken = response.authResponse.accessToken;
-    //getFacebookName();
-    //getFacebookEmail();
+    getFacebookName();
+    getFacebookEmail();
    //alert("Connected");
    $.mobile.changePage('#page_course');
 } else if (response.status == 'not_authorized') {
@@ -350,11 +344,14 @@ function checkFacebookLogin(){
 
 //Log user out of Facebook
 function logoutFacebook(){
-	FB.logout(function(response) {
-		alert('logged out of Facebook')
-  // user is now logged out
-
-});
+	FB.getLoginStatus(function(response) {
+		alert('response '+response.status);
+        if (response && response.status === 'connected') {
+            FB.logout(function(response) {
+                document.location.reload();
+            });
+        }
+    });
 }
 
 /******************************************
@@ -516,7 +513,7 @@ function postResult(name, email, score, user_checkpoints){
 		name = "The crafty tester"
 		email = 'test@123.com'
 	}
-	$.when(createUser(name, email)).done(postScore(email, score, user_checkpoints))
+	$.when(createUser(name, email)).done(postScore(email, score, user_checkpoints, map_id))
 };
 
 
