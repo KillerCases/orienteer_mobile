@@ -237,8 +237,8 @@ $('#startButton').on('click', function(e){
 	var remaining = 0;
 
 	//GetUserName & Email
-	// getFacebookName();
-	// getFacebookEmail();
+	getFacebookName();
+	getFacebookEmail();
 
 	//Change toplay page
 	$.mobile.changePage('#playPage');
@@ -251,7 +251,7 @@ $('#startButton').on('click', function(e){
 	var timer = $.timer(function() {
 		var currentDate = new Date ();
 		var currentTime = currentDate.getTime()/1000; // Give time in seconds
-		remaining = parseInt(180 + (startTime - currentTime)); //3600 seconds = 1 hour
+		remaining = parseInt(300 + (startTime - currentTime)); //3600 seconds = 1 hour
 		if(remaining >=0){	
 			$('#counter').html(Math.ceil(remaining/60));	
 		}
@@ -332,10 +332,10 @@ function checkFacebookLogin(){
     // the user is logged in to Facebook, 
     // but has not authenticated your app
     $.mobile.changePage('#page_course');
-    alert("Not_authorized");
+    // alert("Not_authorized");
 } else {
     // the user isn't logged in to Facebook.
-    alert('Not connected to Facebook')
+    // alert('Not connected to Facebook')
     promptFacebookLogin();
     $.mobile.changePage('#page_course');
 }
@@ -345,7 +345,7 @@ function checkFacebookLogin(){
 //Log user out of Facebook
 function logoutFacebook(){
 	FB.getLoginStatus(function(response) {
-		alert('response '+response.status);
+		// alert('response '+response.status);
         if (response && response.status === 'connected') {
             FB.logout(function(response) {
                 document.location.reload();
@@ -510,7 +510,7 @@ function postScore(email, score, user_checkpoints, map_id){
 
 function postResult(name, email, score, user_checkpoints){
 	if (!name && !email){
-		name = "The crafty tester"
+		name = "Not specified"
 		email = 'test@123.com'
 	}
 	$.when(createUser(name, email)).done(postScore(email, score, user_checkpoints, map_id))
