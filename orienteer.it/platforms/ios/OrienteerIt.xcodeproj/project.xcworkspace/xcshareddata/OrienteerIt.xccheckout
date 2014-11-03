@@ -10,29 +10,29 @@
 	<string>OrienteerIt</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>4888AAEE-67D0-40FF-88E7-62FF6C4B11A0</key>
-		<string>ssh://github.com/KillerCases/orienteer_mobile.git</string>
+		<key>85CB0F9F09BB86CD71D2D404B74D2D36FAAA074C</key>
+		<string>github.com:KillerCases/orienteer_mobile.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>orienteer.it/platforms/ios/OrienteerIt.xcodeproj/project.xcworkspace</string>
+	<string>orienteer.it/platforms/ios/OrienteerIt.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>4888AAEE-67D0-40FF-88E7-62FF6C4B11A0</key>
+		<key>85CB0F9F09BB86CD71D2D404B74D2D36FAAA074C</key>
 		<string>../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/KillerCases/orienteer_mobile.git</string>
+	<string>github.com:KillerCases/orienteer_mobile.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>4888AAEE-67D0-40FF-88E7-62FF6C4B11A0</string>
+	<string>85CB0F9F09BB86CD71D2D404B74D2D36FAAA074C</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>4888AAEE-67D0-40FF-88E7-62FF6C4B11A0</string>
+			<string>85CB0F9F09BB86CD71D2D404B74D2D36FAAA074C</string>
 			<key>IDESourceControlWCCName</key>
 			<string>orienteer_mobile</string>
 		</dict>

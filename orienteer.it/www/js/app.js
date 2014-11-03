@@ -170,6 +170,7 @@ $('#logButton').on("click", function(e){
 				$('#map_canvas2').gmap('option', 'center', new google.maps.LatLng(userCheckpoints[last].latitude,userCheckpoints[last].longitude));
 				$('#map_canvas2').gmap('option', 'zoom', 17);
 				//Alert based on whether a valid checkpoint was found
+				alert('about to validate')
 				validate(userCheckpoints[last], correctCheckpoints);
 		 		// Log position in userCheckpoints array
          }, 750);
@@ -242,8 +243,13 @@ $('#courseBack').on('click', function(){
 /*******************************************/
 
 $('#startButton').on('click', function(e){
+	alert('test');
+})
+
+$('#startButton').on('click', function(e){
 	//Reset timer to full time
 	var remaining = 0;
+	alert('Facebook name is'+firstName);
 
 	//GetUserName & Email
 	getFacebookName();

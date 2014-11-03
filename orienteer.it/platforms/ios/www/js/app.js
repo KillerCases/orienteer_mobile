@@ -60,21 +60,30 @@ var map_id =3; // Default to map id 1
 
 $(document).on("pagecreate", "#page_splash", function () { 
 	// alert('splash');
+	clearMaps();
 });
 $(document).on("pageshow", "#page_course", function () { 
+	clearMaps()
 	//alert('start');
 });
 $(document).on("pagebeforehide", '#page_course', function(){
+	clearMaps()
 	$('#courses').empty() // Clear old courses from the page
 });
 $(document).on("pageshow", "#startPage", function () { 
+	clearMaps()
 	showCanvas(map_id);
 });
 $(document).on("pageshow", "#playPage", function () { 
 	//alert('play');
+	clearMaps()
 	showCanvasAgain(map_id);
-
 });
+
+function clearMaps(){
+	$('#map_canvas').gmap('destroy');
+	$('#map_canvas2').gmap('destroy');
+}
 
 /******************************************
 /* GENERATE MAPS     
@@ -164,8 +173,8 @@ $('#logButton').on("click", function(e){
 		setTimeout(
 			function(){
 				last = userCheckpoints.length -1
-				//alert('currentlatitude is' + userCheckpoints[last].latitude);
-				//alert('currentlongitude is' + userCheckpoints[last].longitude);
+				// alert('currentlatitude is' + userCheckpoints[last].latitude);
+				// alert('currentlongitude is' + userCheckpoints[last].longitude);
 				//Recenter map at current position (in case google maps goes crazy)
 				$('#map_canvas2').gmap('option', 'center', new google.maps.LatLng(userCheckpoints[last].latitude,userCheckpoints[last].longitude));
 				$('#map_canvas2').gmap('option', 'zoom', 17);
@@ -175,6 +184,7 @@ $('#logButton').on("click", function(e){
          }, 750);
 	});	
 });
+
 
 //Navigate back to start page and clear userCheckpoints array
 $('.startAgain').on('click', function(e){
@@ -219,7 +229,7 @@ function getCourses(location){
             )
          $('#courses').on('click', '.text_wrapper', function() {
             map_id = $(this).attr('id');
-            $('#map_canvas').gmap('destroy');
+            clearMaps();
             $.when(getCorrectCheckpoints(map_id)).done($.mobile.changePage('#startPage'));  
         }); 
      });
@@ -473,8 +483,8 @@ function positionLog(a, callback){
 	if(navigator.geolocation) {
     // This is the specific PhoneGap API call
     navigator.geolocation.getCurrentPosition(function(p) {
-    	//alert('My lat is '+p.coords.latitude);
-    	//alert('My long is '+p.coords.longitude);
+    	// alert('My lat is '+p.coords.latitude);
+    	// alert('My long is '+p.coords.longitude);
         // p is the object returned
         a.push({latitude: p.coords.latitude, longitude: p.coords.longitude});
         //alert('p coord' + p.coords.latitude)   
@@ -510,34 +520,14 @@ function postScore(email, score, user_checkpoints, map_id){
 
 function postResult(name, email, score, user_checkpoints){
 	if (!name && !email){
-		name = "Not specified"
-		email = 'test@123.com'
+		name = "Mobile User"
+		email = 'undefined@mobile2.com'
+		// Associates everything with a user in the system that has this email. Match is on email
 	}
 	$.when(createUser(name, email)).done(postScore(email, score, user_checkpoints, map_id))
 };
 
 
-/////////////////////////////
-
-/* DO NOT TOUCH THIS WORKS!!!!!!!!!
-
-function createUser(name, email, score, user_checkpoints, map_id){
-	$.post("http://www.orienteer.it/mobile_user",{email: 'jo@523.com', name: 'Unregistered User', password: '42345678'}, function(data, success){
-			alert("CREATE USER: " + data[0].id + "\nStatus: " + status);
-	});
-};
-
-function postScore(name, email, score, user_checkpoints){
-	$.post("http://www.orienteer.it/result",{score: '4003', map_id: '1', email: "jo@23.com"},function(data, status){
-			alert("RESULT POST: " + data + "\nStatus: " + status);
-	});
-}
-
-function postResult(name, email, score, user_checkpoints, map_id){
-	$.when(createUser()).done(postScore())
-};
-
-*/
 
 
 
